@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>rusk | 공유하세요. 훨씬 더 자유롭게.</title>
+    <meta name="viewport" content="width=device-width; initial-scale=1.0, minimun-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/css/materialize.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="/mjs/bin/materialize.js"></script>
+    <script type="text/javascript" src="/js/rusk.js"></script>
+  </head>
+  <body style="margin:0;padding:0;width:100%;height:100vh;background-position: center;background-repeat: no-repeat;background-size: cover;background-color:#333333">
+    <div style="margin:0;width:100%;height:100vh;background:url('img/index_bg/screen_cover.png');" class="valign-wrapper" >
+    <div>
+      <a style="background-image:url('img/l.png');display:block;overflow: hidden;text-indent: -999em;background-size: contain;height:73px;width:214px;background-repeat: no-repeat;margin:auto;">rusk</a>
+      <p class="valign center-align white-text">
+<!--         Share so many photos with your people!<br>
+        We give you infinite storage.<br>
+        But, there is no sign in or bother things!<br>
+        Isn`t it Awesome?<br> -->
+        엄청나게 많은 사진들을 함께 공유하세요!<br>
+        제한 없는 사진 저장소를 무료로 드립니다.<br>
+        그럼에도 불구하고! 로그인도 광고도 없어요.<br>
+        정말 엄청 놀랍지 않아요?!<br>
+        <br>
+        <a class="waves-effect waves-light btn dropdown-button" data-activates='js-btn-activate'>새 저장소 당장 만들기</a>
+        <ul id='js-btn-activate' class='dropdown-content'>
+          <li><a href="#!" id="js-random">랜덤으로 저장소 만들기</a></li>
+          <li><a href="#" onclick="pr()">저장소 이름지어 만들기</a></li>
+        </ul>
+      </p>
+      </div>
+    </div>
+  </body>
+  <script>
+  $('.dropdown-button').dropdown({
+      inDuration: 300,
+      outDuration: 225,
+      constrain_width: false, // Does not change width of dropdown to that of the activator
+      hover: false, // Activate on click
+      alignment: 'center', // Aligns dropdown to left or right edge (works with constrain_width)
+      gutter: 0, // Spacing from edge
+    }
+  );
+  $("#js-random").attr("href",'/'+Math.floor(Math.random()*100000000));
+  $('body').css("background-image","url('img/index_bg/"+(Math.floor(Math.random()*30)+1)+".jpg')");
+  function pr() {
+    var name = prompt("원하는 저장소 이름을 입력해 주십시오.", "예)youngkyu");
+    if (name != null) {
+        location.href = location.origin + "/" + name;
+    }
+    return false;
+  }
+
+  </script>
+</html>

@@ -1,0 +1,37 @@
+input:focus,
+select:focus,
+textarea:focus,
+button:focus,
+div:focus {
+    outline: none;
+}
+
+#main-navigator {
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 0 10px;
+  z-index: 999;
+}
+
+#main-container {
+  margin-top: 90px;
+  min-height: 100vh;
+}
+
+.card-title.white-text {
+	text-shadow: 1px 0px 3px rgba(150, 150, 150, 0.8);
+}
+
+.card-image {
+	height: 260px;
+	width: 100%;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.card-title {
+
+  word-break: break-all;
+}

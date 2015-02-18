@@ -1,0 +1,70 @@
+extends layout
+
+block content
+  nav#main-navigator
+    .nav-wrapper
+      a.brand-logo(href="/", style="padding:9px 0 15px 0")
+        img(src="img/l.png", height="40", width="auto")
+      ul#nav-mobile.right.side-nav
+        li
+          a.modal-trigger(href="#file-upload-modal") 파일올리기
+        li
+          a.modal-trigger(href="#share-url-modal") 공유하기
+      a.button-collapse(href="#", data-activates="nav-mobile")
+        i.mdi-navigation-menu
+
+  div#main-container.container
+    .row
+      each value, key in list
+        - var file = JSON.parse(value);
+          - var c = file.name.replace(/\./gi,"");
+            .col.s12.m6.l3(id="#{c}", data-info="#{key}")
+              .card
+                .card-image.waves-effect.waves-block.waves-light(style="background-image:url('thumbnail/#{file.name}')")
+                  span.card-title.white-text #{file.originalname}
+                .card-content
+                  a.right.js-del(href="##{c}", style="margin-right:0", data-storage="#{id}")
+                    i.mdi-content-clear
+                  a.right(href="javascript:toast('준비중인 기능입니다. 빨리 필요하시다면 메일로 재촉해주세요!', 4000)", style="margin-right:10px")
+                    i.mdi-social-share
+                  p
+                    a(href="#{id}/download/#{file.name}", target="_blank") 다운로드
+
+  footer.page-footer
+    .container
+        .row
+          .col.l6.s12
+            h5.white-text rusk beta!
+            p.grey-text.text-lighten-4 용량 제한 없이 사용할 수 있는 사진 공유용 스토리지 서비스, 러스크의 베타 서비스를 시작합니다 :) 회원가입도, 로그인도 전혀 필요 없습니다. 그저 올리기만 하면 되요!
+          .col.l4.offset-l2.s12
+            h5.white-text
+            ul
+              li
+                a.grey-text.text-lighten-3(href='http://dev.youngkyu.kr') 개발자 블로그
+              li
+                a.grey-text.text-lighten-3(href='http://www.facebook.com/youngkyu') Facebook
+              li
+                a.grey-text.text-lighten-3(href='http://blog.youngkyu.kr') Tumblr
+              li
+                a.grey-text.text-lighten-3(href='mailto:cho@youngkyu.kr') 메일보내기
+              ul
+          
+      .footer-copyright
+        .container
+          | &copy; Copyright. 2015 youngkyu.
+
+  #file-upload-modal.modal
+    h4 파일 업로드하기
+    form(action="#{id}/upload",method="post", enctype="multipart/form-data")
+      input(type="file", name="file", multiple="multiple")
+      button.btn.waves-effect.waves-light(type="submit") Submit
+
+  #share-url-modal.modal
+    h4 @#{id}
+    br
+    .input-field
+      i.mdi-social-share.prefix
+      input#share-url-input-box(readonly="readonly", value="#{domain_url}/#{id}", type="text")
+      label(for="share-url-input-box") SHARE URL
+
+
