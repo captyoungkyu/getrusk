@@ -15229,3 +15229,4 @@ Resized and cropped: 300 x 300
 [0mGET /css/materialize.css.map [32m200 [0m512.516 ms - 103637[0m
 [0mGET / [32m200 [0m6.884 ms - 2866[0m
 [0mGET /robots.txt [32m200 [0m177.948 ms - 2736[0m
+error: Forever detected script exited with code: null
